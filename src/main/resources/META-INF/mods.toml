@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[39,)"
+license="All rights reserved"
+
+[[mods]]
+modId="calemicore"
+version="1.0.0"
+displayName="Calemi Core"
+authors="Calemi"
+credits="Calemi - Programmer"
+description='''
+    This mod adds base functions for my other mods.
+    '''
+
+[[dependencies.calemicore]]
+modId="forge"
+mandatory=true
+versionRange="[39.0.9,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.calemicore]]
+modId="minecraft"
+mandatory=true
+versionRange="1.18.1"
+ordering="NONE"
+side="BOTH"
