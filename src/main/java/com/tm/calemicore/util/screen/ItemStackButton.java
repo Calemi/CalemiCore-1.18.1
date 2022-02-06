@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public abstract class ItemStackButton extends Button {
 
-    protected ScreenRect rect;
+    protected ScreenRect hoverRect;
     protected ResourceLocation textureLocation;
     protected final ItemRenderer itemRenderer;
 
@@ -24,7 +24,7 @@ public abstract class ItemStackButton extends Button {
      */
     public ItemStackButton(int x, int y, ResourceLocation textureLocation, ItemRenderer itemRender, OnPress pressable) {
         super(x, y, 16, 16, new TextComponent(""), pressable);
-        rect = new ScreenRect(this.x, this.y, width, height);
+        hoverRect = new ScreenRect(x, y, 16, 16);
         this.textureLocation = textureLocation;
         this.itemRenderer = itemRender;
     }
@@ -32,23 +32,15 @@ public abstract class ItemStackButton extends Button {
     public abstract ItemStack getRenderedStack();
     public abstract TranslatableComponent[] getTooltip();
 
-    public void setRect(ScreenRect rect) {
-        this.rect = rect;
-        this.x = rect.x;
-        this.y = rect.y;
-        this.width = rect.width;
-        this.height = rect.height;
-    }
-
     @Override
     public void renderButton (PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
 
         if (this.visible && this.active) {
 
-            isHovered = rect.contains(mouseX, mouseY);
+            isHovered = hoverRect.contains(mouseX, mouseY);
 
-            ScreenHelper.drawItemStack(itemRenderer, getRenderedStack(), rect.x, rect.y);
-            ScreenHelper.drawHoveringTextBox(poseStack, textureLocation, mouseX, mouseY, 150, rect, getTooltip());
+            ScreenHelper.drawItemStack(itemRenderer, getRenderedStack(), hoverRect.x, hoverRect.y);
+            ScreenHelper.drawHoveringTextBox(poseStack, hoverRect, 150, mouseX, mouseY, 0xFFFFFF, getTooltip());
         }
     }
 }

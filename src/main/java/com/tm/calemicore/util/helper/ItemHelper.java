@@ -1,7 +1,6 @@
 package com.tm.calemicore.util.helper;
 
 import com.tm.calemicore.util.Location;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -40,6 +39,41 @@ public class ItemHelper {
         }
 
         return msg;
+    }
+
+    /**
+     * Spawns an Item Stack. Supports Item Stacks that have more than their max stack size.
+     * @param level The Level to spawn in.
+     *              * @param entity The Entity to spawn at.
+     * @param stack The Item Stack to spawn.
+     */
+    public static void spawnOverflowingStackAtEntity(Level level, Entity entity, ItemStack stack) {
+        spawnOverflowingStack(level, (float) entity.getX(), (float) entity.getY() + 0.5F, (float) entity.getZ(), stack);
+    }
+
+    /**
+     * Spawns an Item Stack. Supports Item Stacks that have more than their max stack size.
+     * @param level The Level to spawn in.
+     * @param x The x position to spawn at.
+     * @param y The y position to spawn at.
+     * @param z The z position to spawn at.
+     * @param stack The Item Stack to spawn.
+     */
+    private static void spawnOverflowingStack(Level level, float x, float y, float z, ItemStack stack) {
+
+        if (stack.getCount() > stack.getMaxStackSize()) {
+
+            int amountLeft = stack.getCount();
+
+            while (amountLeft > 0) {
+                ItemStack spawnStack = stack.copy();
+                spawnStack.setCount(Math.min(amountLeft, stack.getMaxStackSize()));
+                ItemHelper.spawnStack(level, x, y, z, spawnStack);
+                amountLeft -= spawnStack.getCount();
+            }
+        }
+
+        else ItemHelper.spawnStack(level, x, y, z, stack);
     }
 
     /**

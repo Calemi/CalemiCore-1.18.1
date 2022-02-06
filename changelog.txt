@@ -1,0 +1,22 @@
+[v1.0.6]
+-Added more methods to InventoryHelper
+-Added more methods to ItemHelper
+
+[v1.0.5]
+-Fixed bug with ScreenContainerBase
+
+[v1.0.4]
+-Added ButtonRect
+
+[v1.0.3]
+-Refined ScreenHelper class.
+-Added more base classes.
+
+[v1.0.2]
+-Changed the "contains" function's visibility in BlockScanner to public.
+
+[v1.0.1]
+-Changed some fields' visibility in BlockScanner.
+
+[v1.0.0]
+-Initial build.

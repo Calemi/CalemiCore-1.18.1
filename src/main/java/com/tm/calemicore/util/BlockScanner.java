@@ -12,9 +12,9 @@ public class BlockScanner {
 
     public final ArrayList<Location> buffer = new ArrayList<>();
 
-    private final Location origin;
-    private final IForgeBlockState blockToScan;
-    private final int maxScanSize;
+    public final Location origin;
+    public final IForgeBlockState blockToScan;
+    public final int maxScanSize;
 
     public BlockScanner(Location location, IForgeBlockState blockToScan, int maxScanSize) {
         this.origin = location;
@@ -36,7 +36,7 @@ public class BlockScanner {
         buffer.clear();
     }
 
-    private void scan (Location location, boolean radiusBranch) {
+    public void scan (Location location, boolean radiusBranch) {
 
         if (buffer.size() >= maxScanSize) {
             return;
@@ -72,7 +72,7 @@ public class BlockScanner {
         }
     }
 
-    private boolean contains (Location location) {
+    public boolean contains (Location location) {
 
         for (Location nextLocation : buffer) {
 
