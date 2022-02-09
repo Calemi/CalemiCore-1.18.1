@@ -83,17 +83,16 @@ public abstract class ScreenBase extends Screen {
      * Handles closing the GUI when the inventory key is pressed.
      */
     @Override
-    public boolean keyPressed(int i1, int i2, int i3) {
-        super.keyPressed(i1, i2, i3);
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
 
         if (minecraft != null) {
 
-            if (canCloseWithInvKey() && i1 == minecraft.options.keyInventory.getKey().getValue()) {
-                player.closeContainer();
+            if (canCloseWithInvKey() && keyCode == minecraft.options.keyInventory.getKey().getValue()) {
+                onClose();
                 return true;
             }
         }
 
-        return false;
+        return super.keyPressed(keyCode, scanCode, modifiers);
     }
 }

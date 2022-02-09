@@ -239,11 +239,11 @@ public class Location {
             return;
         }
 
+        SoundHelper.playBlockBreak(this, getBlockState());
+
         if (breaker instanceof ServerPlayer) {
             ((ServerPlayer) breaker).gameMode.destroyBlock(blockPos);
         }
-
-        SoundHelper.playBlockBreak(this, getBlockState());
     }
 
     /**

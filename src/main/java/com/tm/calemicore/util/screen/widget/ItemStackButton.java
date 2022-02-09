@@ -1,7 +1,8 @@
-package com.tm.calemicore.util.screen;
+package com.tm.calemicore.util.screen.widget;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.tm.calemicore.util.helper.ScreenHelper;
+import com.tm.calemicore.util.screen.ScreenRect;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.network.chat.TextComponent;

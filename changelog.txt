@@ -1,3 +1,6 @@
+[v1.0.8]
+-Added OreHelper
+
 [v1.0.6]
 -Added more methods to InventoryHelper
 -Added more methods to ItemHelper
