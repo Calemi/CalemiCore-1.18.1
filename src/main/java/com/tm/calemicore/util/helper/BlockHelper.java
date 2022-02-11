@@ -6,7 +6,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
 /**
@@ -14,25 +13,24 @@ import net.minecraft.world.level.block.Block;
  */
 public class BlockHelper {
 
-    //The maximum size of Blocks to search in a row.
-    private static final int MAX_ROW_SIZE = 64;
-
     /**
      * Places a block in the next available place in a row.
+     * @param player The Player placing the Blocks.
      * @param block The Block that gets placed.
      * @param originPos The origin of the search.
      * @param rowDirection The Direction of the row.
+     * @param maxSearchSize The maximum amount of Blocks that will be placed.
      */
-    public static void placeBlockRow(Level level, Player player, Block block, BlockPos originPos, Direction rowDirection) {
+    public static void placeBlockRow(Player player, Block block, BlockPos originPos, Direction rowDirection, int maxSearchSize) {
 
-        Location location = new Location(level, originPos);
+        Location location = new Location(player.getLevel(), originPos);
         ItemStack currentStack = player.getMainHandItem();
 
         //Checks if the held stack is a Block.
         if (currentStack.getItem() == Item.BY_BLOCK.get(block)) {
 
             //Iterates through every possible placement in a line.
-            for (int i = 0; i < MAX_ROW_SIZE; i++) {
+            for (int i = 0; i < maxSearchSize; i++) {
 
                 Location nextLocation = new Location(location, rowDirection, i);
 
@@ -44,31 +42,12 @@ public class BlockHelper {
 
                         nextLocation.setBlock(block);
                         SoundHelper.playBlockPlace( nextLocation, nextLocation.getBlockState());
-                        InventoryHelper.consumeItems(player.getInventory(), new ItemStack(block), 1, false);
+                        ContainerHelper.consumeItems(player.getInventory(), new ItemStack(block), 1, false);
                     }
 
                     break;
                 }
             }
         }
-    }
-
-    public static boolean canPlaceTorchAt (Location location) {
-
-        if (!location.isBlockValidForPlacing()) {
-            return false;
-        }
-
-        if (location.getLightValue() > 7) {
-            return false;
-        }
-
-        if (location.level.isWaterAt(location.getBlockPos())) {
-            return false;
-        }
-
-        Location locationDown = new Location(location, Direction.DOWN);
-
-        return locationDown.isFullCube();
     }
 }

@@ -16,7 +16,7 @@ public class ItemHelper {
 
     /**
      * @param count The count to use.
-     * @return A message of a number counted by stacks.
+     * @return A message containing the number counted by stacks.
      */
     public static MutableComponent countByStacks(int count) {
         int remainder = (count % 64);
@@ -44,7 +44,7 @@ public class ItemHelper {
     /**
      * Spawns an Item Stack. Supports Item Stacks that have more than their max stack size.
      * @param level The Level to spawn in.
-     *              * @param entity The Entity to spawn at.
+     * @param entity The Entity to spawn at.
      * @param stack The Item Stack to spawn.
      */
     public static void spawnOverflowingStackAtEntity(Level level, Entity entity, ItemStack stack) {

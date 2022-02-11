@@ -10,8 +10,7 @@ import net.minecraft.world.level.Level;
  * Use this class to help with Level Effects.
  */
 public class LevelEffectHelper {
-
-
+    
     /**
      * Summons a bolt of lightning at a Location
      * @param location The Location to summon at.

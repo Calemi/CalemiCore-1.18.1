@@ -6,9 +6,9 @@ import net.minecraft.world.item.ItemStack;
 import java.util.Objects;
 
 /**
- * Use this class for to help with Inventories.
+ * Use this class for to help with Containers.
  */
-public class InventoryHelper {
+public class ContainerHelper {
 
     /**
      * @param container The Container to count in.
@@ -185,10 +185,10 @@ public class InventoryHelper {
                 partialStack.setCount(stackSize);
                 amountLeft -= stackSize;
 
-                InventoryHelper.insertStack(container, partialStack);
+                ContainerHelper.insertStack(container, partialStack);
             }
         }
 
-        else InventoryHelper.insertStack(container, stack);
+        else ContainerHelper.insertStack(container, stack);
     }
 }

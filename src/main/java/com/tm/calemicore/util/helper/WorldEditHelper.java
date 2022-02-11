@@ -1,12 +1,23 @@
 package com.tm.calemicore.util.helper;
 
 import com.tm.calemicore.util.Location;
+import com.tm.calemicore.util.helper.shape.ShapeBase;
 import net.minecraft.core.Direction;
 
 import java.util.ArrayList;
 
 public class WorldEditHelper {
 
+    public static ArrayList<Location> selectShape(ShapeBase shape) {
+        return shape.getShapeLocations();
+    }
+
+    /**
+     * @param location
+     * @param face
+     * @param radius
+     * @return A list containing all the locations
+     */
     public static ArrayList<Location> selectFlatCubeFromFace (Location location, Direction face, int radius) {
 
         ArrayList<Location> list = new ArrayList<>();
