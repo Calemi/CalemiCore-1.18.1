@@ -9,6 +9,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 
+/**
+ * Base class for Screens.
+ */
 public abstract class ScreenBase extends Screen {
 
     /**
@@ -71,7 +74,7 @@ public abstract class ScreenBase extends Screen {
 
         if (textureLocation != null) {
             RenderSystem.setShaderTexture(0, textureLocation);
-            ScreenHelper.drawRect(poseStack, 0, 0, new ScreenRect(getScreenX(), getScreenY(), getGuiSizeX(), getGuiSizeY()), 0);
+            ScreenHelper.drawRect(0, 0, new ScreenRect(getScreenX(), getScreenY(), getGuiSizeX(), getGuiSizeY()), 0);
         }
 
         drawGuiBackground(poseStack, mouseX, mouseY);

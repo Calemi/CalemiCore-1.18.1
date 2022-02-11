@@ -7,27 +7,30 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+/**
+ * A Button that renders an Item Stack.
+ */
 @OnlyIn(Dist.CLIENT)
 public abstract class ItemStackButton extends Button {
 
     protected ScreenRect hoverRect;
-    protected ResourceLocation textureLocation;
     protected final ItemRenderer itemRenderer;
 
     /**
-     * A base button used to render a given ItemStack.
-     * @param pressable Called when the button is pressed.
+     * Creates an Item Stack Button.
+     * @param x The x coordinate of the Button.
+     * @param y The y coordinate of the Button.
+     * @param itemRenderer The Item Renderer to use.
+     * @param onPress Use this to handle anything when the Button is pressed.
      */
-    public ItemStackButton(int x, int y, ResourceLocation textureLocation, ItemRenderer itemRender, OnPress pressable) {
-        super(x, y, 16, 16, new TextComponent(""), pressable);
+    public ItemStackButton(int x, int y, ItemRenderer itemRenderer, OnPress onPress) {
+        super(x, y, 16, 16, new TextComponent(""), onPress);
         hoverRect = new ScreenRect(x, y, 16, 16);
-        this.textureLocation = textureLocation;
-        this.itemRenderer = itemRender;
+        this.itemRenderer = itemRenderer;
     }
 
     public abstract ItemStack getRenderedStack();

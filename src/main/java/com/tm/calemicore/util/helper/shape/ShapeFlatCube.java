@@ -7,7 +7,13 @@ import java.util.ArrayList;
 
 public class ShapeFlatCube extends ShapeBase {
 
-    public ShapeFlatCube(Location origin, Direction face, int radius) {
+    /**
+     * Creates a flat cube Shape.
+     * @param origin The origin Location of the flat cube.
+     * @param facing Determines the direction of the flat cube
+     * @param radius The radius of the flat cube.
+     */
+    public ShapeFlatCube(Location origin, Direction facing, int radius) {
 
         ArrayList<Location> shapeLocations = new ArrayList<>();
 
@@ -15,18 +21,18 @@ public class ShapeFlatCube extends ShapeBase {
         int yRad = radius;
         int zRad = radius;
 
-        if (face == Direction.UP || face == Direction.DOWN) {
+        if (facing == Direction.UP || facing == Direction.DOWN) {
             yRad = 0;
         }
 
-        else if (face == Direction.NORTH || face == Direction.SOUTH) {
+        else if (facing == Direction.NORTH || facing == Direction.SOUTH) {
             zRad = 0;
         }
 
-        else if (face == Direction.EAST || face == Direction.WEST) {
+        else if (facing == Direction.EAST || facing == Direction.WEST) {
             xRad = 0;
         }
 
-        this.shapeLocations = new ShapeCubeFromRadius(origin, xRad, yRad, zRad).getShapeLocations();
+        addShapeLocations(new ShapeCube(origin, xRad, yRad, zRad).getShapeLocations());
     }
 }

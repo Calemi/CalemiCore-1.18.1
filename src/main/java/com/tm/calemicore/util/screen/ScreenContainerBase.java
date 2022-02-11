@@ -10,6 +10,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
+/**
+ * Base class for Container Screens.
+ */
 public abstract class ScreenContainerBase<T extends MenuBase> extends AbstractContainerScreen<T> {
 
     /**
@@ -55,7 +58,7 @@ public abstract class ScreenContainerBase<T extends MenuBase> extends AbstractCo
             RenderSystem.setShader(GameRenderer::getPositionTexShader);
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             RenderSystem.setShaderTexture(0, textureLocation);
-            ScreenHelper.drawRect(poseStack, 0, 0, new ScreenRect(getScreenX(), getScreenY(), imageWidth, imageHeight), 0);
+            ScreenHelper.drawRect(0, 0, new ScreenRect(getScreenX(), getScreenY(), imageWidth, imageHeight), 0);
         }
     }
 }

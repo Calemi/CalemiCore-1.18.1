@@ -8,15 +8,32 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * The base class for Menus.
+ */
 public abstract class MenuBase extends AbstractContainerMenu {
 
+    /**
+     * Creates a Menu.
+     * @param menuType The type of the Menu.
+     * @param containerID The container ID of the Menu.
+     */
     protected MenuBase(@Nullable MenuType<?> menuType, int containerID) {
         super(menuType, containerID);
     }
 
+    /**
+     * @return The amount of slots the Menu contains.
+     */
     public abstract int getContainerSize();
 
+    /**
+     * Helper method that adds the Player's Slots to the menu.
+     * @param playerInv The Player's Inventory.
+     * @param yOffset The y offset coordinate for the Player's Slots.
+     */
     public void addPlayerInventory(Inventory playerInv, int yOffset) {
+
         //Inventory
         for(int rowY = 0; rowY < 3; rowY++) {
             for(int rowX = 0; rowX < 9; rowX++) {

@@ -12,17 +12,23 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+/**
+ * Smooth textured variant of the default Button.
+ */
 @OnlyIn(Dist.CLIENT)
-public class ButtonRect extends Button {
+public class SmoothButton extends Button {
 
     public final ScreenRect rect;
 
     /**
-     * Used as the basic button for anything in the mod.
-     * @param textKey The text rendered on the button.
-     * @param onPress Called when the button is pressed.
+     * Creates a Smooth Button.
+     * @param x The x coordinate of the Button.
+     * @param y The y coordinate of the Button.
+     * @param width The width of the Button.
+     * @param textKey The text key on the Button.
+     * @param onPress Use this to handle anything when the Button is pressed.
      */
-    public ButtonRect(int x, int y, int width, String textKey, OnPress onPress) {
+    public SmoothButton(int x, int y, int width, String textKey, OnPress onPress) {
         super(width,16, x, y, new TranslatableComponent(textKey), onPress);
 
         this.x = x;
@@ -33,7 +39,7 @@ public class ButtonRect extends Button {
         rect = new ScreenRect(x, y, width, 16);
     }
 
-    public void setPosition (int x, int y) {
+    public void setPosition(int x, int y) {
         rect.x = x;
         this.x = x;
         rect.y = y;
@@ -66,7 +72,7 @@ public class ButtonRect extends Button {
             RenderSystem.defaultBlendFunc();
             RenderSystem.enableDepthTest();
 
-            ScreenHelper.drawExpandableRect(poseStack, 0, 0, rect, 256, 16, 0);
+            ScreenHelper.drawExpandableRect(0, 0, rect, 256, 16, 0);
             ScreenHelper.drawCenteredString(poseStack, rect.x + (rect.width / 2), rect.y + (rect.height - 8) / 2, 0, 0xFFFFFF, (MutableComponent) getMessage());
         }
     }

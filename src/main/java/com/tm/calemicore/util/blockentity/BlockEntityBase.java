@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Base class for Block Entities
+ * Base class for Block Entities.
  */
 public abstract class BlockEntityBase extends BlockEntity {
 

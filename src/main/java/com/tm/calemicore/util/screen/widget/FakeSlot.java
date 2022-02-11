@@ -12,6 +12,9 @@ import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+/**
+ * A Button that mimics a Slot.
+ */
 @OnlyIn(Dist.CLIENT)
 public class FakeSlot extends Button {
 
@@ -21,14 +24,18 @@ public class FakeSlot extends Button {
     private ItemStack stack = new ItemStack(Items.AIR);
 
     /**
-     * A fake slot. Can set its icon based on what Item is clicked into it.
-     * @param onPress Called when the button is pressed.
+     * Creates a Fake Slot.
+     * @param x The x coordinate of the Fake Slot.
+     * @param y The y coordinate of the Fake Slot.
+     * @param screen The screen of the Fake Slot.
+     * @param itemRenderer The Item Renderer to use.
+     * @param onPress Use this to handle anything when the Button is pressed.
      */
-    public FakeSlot(int x, int y, Screen screen, ItemRenderer itemRender,  Button.OnPress onPress) {
+    public FakeSlot(int x, int y, Screen screen, ItemRenderer itemRenderer,  Button.OnPress onPress) {
         super(x, y, 16, 16, new TextComponent(""), onPress);
         rect = new ScreenRect(this.x, this.y, width, height);
         this.screen = screen;
-        this.itemRender = itemRender;
+        this.itemRender = itemRenderer;
     }
 
     @Override

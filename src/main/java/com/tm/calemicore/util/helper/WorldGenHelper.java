@@ -20,6 +20,9 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Use this class for help with registering ores.
+ */
 @Mod.EventBusSubscriber
 public class WorldGenHelper {
 
@@ -27,6 +30,17 @@ public class WorldGenHelper {
     public static final ArrayList<PlacedFeature> oresNether = new ArrayList<>();
     public static final ArrayList<PlacedFeature> oresEnd = new ArrayList<>();
 
+    /**
+     * Creates and registers an ore.
+     * @param name The name of the ore. Will already apply "ore_" at the beginning.
+     * @param oreBlock The ore Block.
+     * @param deepslateBlock The deepslate variant of the ore Block. Set this to the same block if the ore does not have a deepslate variant.
+     * @param veinSize The size of the ore vein.
+     * @param veinsPerChunk The amount of veins that will appear in one chunk.
+     * @param minY The minimum y value that the vein can generate at.
+     * @param maxY The maximum y value that the vein can generate at.
+     * @param oreList The list to add your ore in. Will determine the dimension to spawn the vein in. Use one of the 3 from this class.
+     */
     public static void registerOre(String name, Block oreBlock, Block deepslateBlock, int veinSize, int veinsPerChunk, int minY, int maxY, ArrayList<PlacedFeature> oreList) {
 
         List<OreConfiguration.TargetBlockState> ORE_TARGET_LIST = List.of(
