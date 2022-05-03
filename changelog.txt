@@ -1,3 +1,7 @@
+[v1.0.13]
+-Updated to minecraft version to 1.18.2
+-Updated forge version to 40.1.2
+
 [v1.0.12]
 -Refined most classes.
 
